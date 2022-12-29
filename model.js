@@ -49,13 +49,15 @@ questionBody:{
 
     questionTags:[String],
     userPosted:String,
+    userId:String,
 
     askedOn :String,
     answers:[
       {
           answerBody:String,
           answeredBy:String,
-          answeredOn:String
+          answeredOn:String,
+          userId:String
       }
     ]
     

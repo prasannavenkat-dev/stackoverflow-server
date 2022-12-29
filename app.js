@@ -133,7 +133,7 @@ app.post("/postQuestion", async function (req, res) {
 
         const { _id, questionTitle, questionBody, questionTags, userPosted, userId, askedOn } = req.body;
       
-
+console.log(userId)
         if (!questionTitle || !questionBody || (questionTags.length == 0)) {
             return res.status(404).send({ message: "Missing Required Field!" })
         }
