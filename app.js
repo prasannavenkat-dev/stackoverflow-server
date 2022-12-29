@@ -71,7 +71,7 @@ app.post("/user/signup", async function (req, res) {
             let userId = Math.floor(Math.random() * 99999999)
             let Profile = new profileModel({ name, email, password: hash, userId, joinedOn });
             let newUser = await Profile.save();
-            const token = jwt.sign({ email: newUser.email, id: newUser._id }, process.env.TOKEN_sECRET, { expiresIn: "1h" })
+            const token = jwt.sign({ email: newUser.email, id: newUser._id }, process.env.TOKEN_SECRET, { expiresIn: "1h" })
             res.status(200).json({ message: "signup success", data: { email, name }, token });
         })
     } catch (error) {
@@ -110,7 +110,7 @@ app.post("/user/signin", async function (req, res) {
 
         bcrypt.compare(password, hash, function (err, result) {
             if (result) {
-                const token = jwt.sign({ email, id: userDetails._id }, process.env.TOKEN_sECRET, { expiresIn: "1h" })
+                const token = jwt.sign({ email, id: userDetails._id }, process.env.TOKEN_SECRET, { expiresIn: "1h" })
                 res.status(200).json({ message: "login success", data: { email, name, userId }, token });
             }
             else {
@@ -324,7 +324,7 @@ let [user] = await profileModel.find({userId})
 if(user){
     let data = await profileModel.findOneAndUpdate({userId},{name}, {new: true})
 
-    const token = jwt.sign({ email:data.email, id: data._id }, process.env.TOKEN_sECRET, { expiresIn: "1h" })
+    const token = jwt.sign({ email:data.email, id: data._id }, process.env.TOKEN_SECRET, { expiresIn: "1h" })
 
 
 
