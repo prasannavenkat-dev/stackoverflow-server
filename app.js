@@ -4,7 +4,7 @@ require("dotenv").config();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const saltRounds = 10;
 const { profileModel, questionModel } = require("./model")
 
